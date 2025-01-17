@@ -91,7 +91,7 @@ public class ConsoleApp implements CommandLineRunner {
 
         tapezEnterPourContinuer();
         log.info("Prix de la commande n° x");
-        log.info("Le prix de la commande est de : ", commandeDAO.montantArticles(10248));
+        log.info("Le prix de la commande est de : {}", commandeDAO.montantArticles(10248));
 
         tapezEnterPourContinuer();
         log.info("Nombre de produits différents commandés par chaque client");

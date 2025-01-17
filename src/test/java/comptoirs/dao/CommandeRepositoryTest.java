@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 
 @DataJpaTest
@@ -57,5 +58,11 @@ public class CommandeRepositoryTest {
         var commande = commandeDao.findById(commandeAvecProduits.getNumero()).orElseThrow();
         assertEquals(commandeAvecProduits, commande);
         assertEquals(2, commande.getLignes().size());
+    }
+
+    @Test
+    void testCalculPrixCommande(){
+        var prixCommande = commandeDao.montantArticles(commandeAvecProduits.getNumero());
+        assertEquals(2240.0000, prixCommande.doubleValue());
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 public interface CommandeRepository extends JpaRepository<Commande, Integer> {
     @Query(
     """
-    SELECT SUM(l.produit.prixUnitaire * l.quantite) * (1 - l.commande.remise) FROM Ligne l WHERE l.commande.numero = :numeroCommande
+    SELECT SUM(l.produit.prixUnitaire * l.quantite * (1 - l.commande.remise)) FROM Ligne l WHERE l.commande.numero = :numeroCommande
     """
     )
     BigDecimal montantArticles(Integer numeroCommande);
